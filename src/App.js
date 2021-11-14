@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import startFetchMyQuery from "./GQL/MyQuery";
 import './App.css'
 import InputForm from "./Components/InputForm/InputForm";
+import TodoList from "./Components/TodoList/TodoList";
 
 class Todo{
     constructor(created_at, description, id, title, updated_at) {
@@ -32,13 +33,10 @@ const App = () => {
                 <InputForm/>
             </div>
             <div className={"todoListDiv"}>
-                {
-                    arrayOfTodos.map(
-                        el => <span key={el.id}>{el.title}</span>
-                    )
-
-
-                }
+                <button className={"btn "}>
+                    &#8634;
+                </button>
+                <TodoList arrayOfTodos={arrayOfTodos}/>
             </div>
         </div>
     );
