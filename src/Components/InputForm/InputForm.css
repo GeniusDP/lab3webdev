@@ -1,0 +1,15 @@
+.texta {
+    width: 90%; /* Ширина поля в процентах */
+    height: 200px; /* Высота поля в пикселах */
+    resize: none; /* Запрещаем изменять размер */
+}
+
+form{
+    width: 40%;
+    height: 100%;
+    background: aqua;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
