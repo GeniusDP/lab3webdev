@@ -1,15 +1,27 @@
-.texta {
-    width: 90%; /* Ширина поля в процентах */
-    height: 200px; /* Высота поля в пикселах */
-    resize: none; /* Запрещаем изменять размер */
-}
-
 form{
-    width: 40%;
+    width: 100%;
     height: 100%;
     background: aqua;
     display: flex;
-    flex-direction: column;
     text-align: center;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
+
+.textarea {
+    width: 90%; /* Ширина поля в процентах */
+    height: 200px; /* Высота поля в пикселах */
+    resize: none; /* Запрещаем изменять размер */
+    margin-bottom: 10px;
+}
+
+input{
+    width: 90%; /* Ширина поля в процентах */
+    margin-bottom: 10px;
+}
+
+button{
+    width: 90%;
+}
+
