@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoListItem from "./TodoListItem";
 import './TodoListItem.css'
-const TodoList = ({arrayOfTodos}) => {
+const TodoList = ({arrayOfTodos, deleteElementById}) => {
     const todoItems = arrayOfTodos.map(
         (el) =>
             <TodoListItem
@@ -11,6 +11,7 @@ const TodoList = ({arrayOfTodos}) => {
                 description={el.description}
                 title={el.title}
                 updated_at={el.updated_at}
+                deleteElementById={deleteElementById}
             />
     );
     return (

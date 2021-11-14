@@ -1,3 +1,11 @@
+*{
+    --backAppColor: #2B2B2B;
+    --myTomato: #ff770e;
+    --basic-input-gradient: linear-gradient(135deg, rgb(235, 206, 23), rgb(255, 102, 25) 63%);
+    --disabled-todo-item: #32a6a6;
+    --my-color: #00bc8c;
+}
+
 html,
 body,
 #root{
@@ -6,10 +14,13 @@ body,
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+    font-size: 25px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
     height: 100%;
+    background: rgb(43,43,43);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2b2b2b",endColorstr="#00a2c3",GradientType=1);
 }
 
 

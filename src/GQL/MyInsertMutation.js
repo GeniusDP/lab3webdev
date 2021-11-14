@@ -5,7 +5,7 @@ export default class MyInsertMutation{
         this.operationsDoc = `
           mutation MyMutation {
             insert_todo_list(on_conflict: {constraint: todo_list_pkey}, 
-            objects: {title: ${this.title}, description: ${this.description}}) {
+            objects: {title: "${this.title}", description: "${this.description}"}) {
               returning {
                 created_at
                 description
