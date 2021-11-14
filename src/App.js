@@ -5,14 +5,16 @@ import InputForm from "./Components/InputForm/InputForm";
 import TodoList from "./Components/TodoList/TodoList";
 import MyDeleteMutation from "./GQL/MyDeleteMutation";
 import NoTodosInfo from "./Components/NoTodosInfo/NoTodosInfo";
+import {Spinner} from "react-bootstrap";
 
 class Todo{
-    constructor(created_at, description, id, title, updated_at) {
+    constructor(created_at, description, id, title, updated_at, done) {
         this.created_at = created_at;
         this.description = description;
         this.id = id;
         this.title = title;
         this.updated_at = updated_at;
+        this.done = done;
     }
 }
 
@@ -20,14 +22,19 @@ class Todo{
 const App = () => {
     const[arrayOfTodos, setArrayOfTodos] = useState([]);
     const[refreshEvent, setRefreshEvent] = useState({});//used to refresh all todos in useEffect hook
+    const[dataIsFetching, setDataIsFetching] = useState(true);
     useEffect(()=>{
-        startFetchMyQuery().then((data)=>{
+        startFetchMyQuery().then(data => {
             let newArray = [];
             newArray = data.todo_list.map((element)=>{
-                return new Todo(element.created_at, element.description, element.id, element.title, element.updated_at);
+                return new Todo(element.created_at, element.description, element.id, element.title, element.updated_at, element.done);
             });
             setArrayOfTodos(newArray);
-        }).catch(err=> console.log("Error " + err))
+        }).then(()=>{
+            setDataIsFetching(false);
+        })
+            .catch(err => console.log("Error " + err))
+
     }, [refreshEvent]);
 
 
@@ -51,19 +58,26 @@ const App = () => {
             </div>
             <div className={"todoListDiv"}>
                 {
-                    arrayOfTodos.length > 0
-                        ?
-                    <button
-                        className={"btn btn-info refresh-button"}
-                        onClick={(event) => {
-                            setRefreshEvent(event);
-                        }}
-                    >
-                        &#8634;
-                    </button>
+                    dataIsFetching
+                            ?
+                        <Spinner animation="grow" />
+                            :
+                        (
+                            arrayOfTodos.length > 0
+                                ?
+                                    // this is a refresh button
+                                    <button
+                                        className={"btn btn-info refresh-button"}
+                                        onClick={(event) => {
+                                            setRefreshEvent(event);
+                                        }}
+                                    >
+                                        &#8634;
+                                    </button>
 
-                        :
-                        <NoTodosInfo/>
+                                :
+                                    <NoTodosInfo/>
+                        )
                 }
                 <TodoList
                     arrayOfTodos={arrayOfTodos}

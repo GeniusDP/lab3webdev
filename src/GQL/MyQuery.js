@@ -25,6 +25,7 @@ const operationsDoc = `
       id
       title
       updated_at
+      done
     }
   }
 `;

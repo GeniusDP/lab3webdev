@@ -30,11 +30,13 @@
 }
 
 .refresh-button{
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
+    background: var(--disabled-todo-item);
 }
 
 .refresh-button:hover{
     background: var(--basic-input-gradient);
+    transform: scale(1.2);
 }

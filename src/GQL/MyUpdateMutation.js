@@ -1,34 +1,31 @@
-export default class MyInsertMutation{
-    constructor(title, description) {
-        this.title = title;
-        this.description = description;
+export default class MyUpdateMutation{
+    constructor(id, isDone) {
+        this.id = id;
+        this.isDone = isDone;
         this.operationsDoc = `
-          mutation MyMutation {
-            insert_todo_list(on_conflict: {constraint: todo_list_pkey}, 
-            objects: {title: "${this.title}", description: "${this.description}"}) {
-              returning {
-                created_at
-                description
-                id
-                title
-                updated_at
-                done
-              }
+          mutation Update {
+            update_todo_list(where: {id: {_eq: ${this.id}}, _set: {done: ${!this.isDone}) {
+                  returning{
+                      created_at
+                      description
+                      done
+                      id
+                      title
+                      updated_at
+                  }
             }
           }
         `;
-
-        this.fetchGraphQL.bind(this);
-        this.executeMyMutation.bind(this);
-        this.startExecuteMyMutation.bind(this);
+        this.fetchGraphQL = this.fetchGraphQL.bind(this);
+        this.executeUpdate = this.executeUpdate.bind(this);
+        this.startExecuteUpdate = this.startExecuteUpdate.bind(this);
     }
-
     async fetchGraphQL(operationsDoc, operationName, variables) {
         const result = await fetch(
             "https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql",
             {
                 headers:{
-                    "content-type":"application/json",
+                    "content-type": "application/json",
                     "x-hasura-admin-secret":"mySecret"
                 },
                 method: "POST",
@@ -44,17 +41,16 @@ export default class MyInsertMutation{
     }
 
 
-
-    executeMyMutation() {
+    executeUpdate() {
         return this.fetchGraphQL(
             this.operationsDoc,
-            "MyMutation",
+            "Update",
             {}
         );
     }
 
-    async startExecuteMyMutation() {
-        const { errors, data } = await this.executeMyMutation();
+    async startExecuteUpdate() {
+        const { errors, data } = await this.executeUpdate();
 
         if (errors) {
             // handle those errors like a pro

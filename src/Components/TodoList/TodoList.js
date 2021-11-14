@@ -12,6 +12,7 @@ const TodoList = ({arrayOfTodos, deleteElementById}) => {
                 title={el.title}
                 updated_at={el.updated_at}
                 deleteElementById={deleteElementById}
+                isDone={el.done}
             />
     );
     return (
