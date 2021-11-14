@@ -4,17 +4,17 @@ export default class MyUpdateMutation{
         this.isDone = isDone;
         this.operationsDoc = `
           mutation Update {
-            update_todo_list(where: {id: {_eq: ${this.id}}, _set: {done: ${!this.isDone}) {
-                  returning{
-                      created_at
-                      description
-                      done
-                      id
-                      title
-                      updated_at
-                  }
+              update_todo_list(_set: {done: ${!this.isDone}}, where: {id: {_eq: ${this.id}}}) {
+                returning {
+                  updated_at
+                  title
+                  id
+                  done
+                  description
+                  created_at
+                }
+              }
             }
-          }
         `;
         this.fetchGraphQL = this.fetchGraphQL.bind(this);
         this.executeUpdate = this.executeUpdate.bind(this);

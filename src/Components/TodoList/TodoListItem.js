@@ -19,7 +19,7 @@ const TodoListItem = ({created_at, description, id, title, updated_at, deleteEle
             onClick={event => {
                  event.preventDefault();
                  new MyUpdateMutation(id, done).startExecuteUpdate()
-                     .then(r => console.log("Result of update: " + r + " " + done))
+                     .then(r => console.log("Result of update: " + JSON.stringify(r) + " " + done))
                      .then(() => setDone(!done))
                      .catch(err => console.log("Error: " + err));
             }}>
