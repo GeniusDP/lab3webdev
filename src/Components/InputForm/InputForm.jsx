@@ -3,7 +3,7 @@ import './InputForm.css'
 import MyInsertMutation from "../../GQL/MyInsertMutation";
 import MyVerticallyCenteredModal from "../MyVerticallyCenteredModal/MyVerticallyCenteredModal";
 
-const InputForm = ({refreshMethod}) => {
+const InputForm = () => {
     const[showModal, setShowModal] = useState(false);
     function onSubmitForm(event){
         event.preventDefault();
@@ -15,7 +15,6 @@ const InputForm = ({refreshMethod}) => {
                     //cleaning the form
                     document.forms[0].elements.namedItem("titleInput").value = "";
                     document.forms[0].elements.namedItem("textArea").value = "";
-                    refreshMethod(event);
                 })
                 .catch((err) => {
                     console.log(err);

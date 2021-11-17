@@ -7,7 +7,6 @@ const TodoListItem = ({created_at, description, id, title, updated_at, deleteEle
     const[done, setDone] = useState(isDone);
     const[showInfoModal, setShowInfoModal] = useState(false);
     const[showDeleteModal, setShowDeleteModal] = useState(false);
-    const[whichButtonClicked, setWhichButtonClicked] = useState("");
 
     const classNames = ["todoListItem"];
     if(done){

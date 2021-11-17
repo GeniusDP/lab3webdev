@@ -21,7 +21,7 @@ class Todo{
 
 const App = () => {
     const[arrayOfTodos, setArrayOfTodos] = useState([]);
-    const[refreshEvent, setRefreshEvent] = useState({});//used to refresh all todos in useEffect hook
+    //const[refreshEvent, setRefreshEvent] = useState({});//used to refresh all todos in useEffect hook
     const[dataIsFetching, setDataIsFetching] = useState(true);
     useEffect(()=>{
         startFetchMyQuery().then(data => {
@@ -35,7 +35,7 @@ const App = () => {
         })
             .catch(err => console.log("Error " + err))
 
-    }, [refreshEvent]);
+    }, []);
 
 
 
@@ -46,7 +46,6 @@ const App = () => {
                 setArrayOfTodos(tmpArray.filter(element => element.id != idToDelete));
             })
             .catch((err)=>console.log(err));
-        setRefreshEvent({nowTime: Date.now()});//only to make useFetch work
     }
 
 
@@ -54,7 +53,7 @@ const App = () => {
     return (
         <div className={"App"}>
             <div className={"formDiv"}>
-                <InputForm refreshMethod={setRefreshEvent}/>
+                <InputForm/>
             </div>
             <div className={"todoListDiv"}>
                 {
@@ -62,22 +61,7 @@ const App = () => {
                             ?
                         <Spinner animation="grow" />
                             :
-                        (
-                            arrayOfTodos.length > 0
-                                ?
-                                    // this is a refresh button
-                                    <button
-                                        className={"btn btn-info refresh-button"}
-                                        onClick={(event) => {
-                                            setRefreshEvent(event);
-                                        }}
-                                    >
-                                        &#8634;
-                                    </button>
-
-                                :
-                                    <NoTodosInfo/>
-                        )
+                        arrayOfTodos.length > 0 || <NoTodosInfo/>
                 }
                 <TodoList
                     arrayOfTodos={arrayOfTodos}
