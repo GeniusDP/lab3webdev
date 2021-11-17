@@ -28,7 +28,7 @@ const App = () => {
             let newArray = [];
             newArray = data.todo_list.map((element)=>{
                 return new Todo(element.created_at, element.description, element.id, element.title, element.updated_at, element.done);
-            });
+            }).sort((a, b) => a.title < b.title ? -1 : 1);
             setArrayOfTodos(newArray);
         }).then(()=>{
             setDataIsFetching(false);
