@@ -1,5 +1,5 @@
 import React from 'react';
-import './NoTodosInfo.css'
+import './NoTodosInfo.scss'
 
 const NoTodosInfo = () => {
     return (

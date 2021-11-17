@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css'
+import './App.scss'
 import InputForm from "./Components/InputForm/InputForm";
 import TodoList from "./Components/TodoList/TodoList";
 import MyDeleteMutation from "./GQL/MyDeleteMutation";

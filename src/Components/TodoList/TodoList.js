@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoListItem from "./TodoListItem";
-import './TodoListItem.css'
+import './TodoListItem.scss'
 const TodoList = ({arrayOfTodos, deleteElementById}) => {
     const todoItems = arrayOfTodos.map(
         (el) =>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './TodoListItem.css'
+import './TodoListItem.scss'
 import MyVerticallyCenteredModal from "../MyVerticallyCenteredModal/MyVerticallyCenteredModal";
 import MyUpdateMutation from "../../GQL/MyUpdateMutation";
 
@@ -9,10 +9,8 @@ const TodoListItem = ({created_at, description, id, title, updated_at, deleteEle
     const[showDeleteModal, setShowDeleteModal] = useState(false);
 
     const classNames = ["todoListItem"];
-    //const[className, setClassNames] =
     if(done){
         classNames.push("is-done");
-        classNames.push("deleted");
     }
     return (
         <div
