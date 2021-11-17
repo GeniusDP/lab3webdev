@@ -17,9 +17,10 @@ const TodoListItem = ({created_at, description, id, title, updated_at, deleteEle
             className={classNames.join(" ")}
             onClick={event => {
                  event.preventDefault();
+                 setDone(!done);
                  new MyUpdateMutation(id, done).startExecuteUpdate()
-                     .then(r => console.log("Result of update: " + JSON.stringify(r) + " " + done))
-                     .then(() => setDone(!done))
+                      .then(r => console.log("Result of update: " + JSON.stringify(r) + " " + done))
+                      //.then(() => setDone(!done))
                      .catch(err => console.log("Error: " + err));
             }}>
                     {/*modal for info button*/}
