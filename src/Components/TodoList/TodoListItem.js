@@ -9,8 +9,10 @@ const TodoListItem = ({created_at, description, id, title, updated_at, deleteEle
     const[showDeleteModal, setShowDeleteModal] = useState(false);
 
     const classNames = ["todoListItem"];
+    //const[className, setClassNames] =
     if(done){
         classNames.push("is-done");
+        classNames.push("deleted");
     }
     return (
         <div
@@ -19,8 +21,6 @@ const TodoListItem = ({created_at, description, id, title, updated_at, deleteEle
                  event.preventDefault();
                  setDone(!done);
                  new MyUpdateMutation(id, done).startExecuteUpdate()
-                      .then(r => console.log("Result of update: " + JSON.stringify(r) + " " + done))
-                      //.then(() => setDone(!done))
                      .catch(err => console.log("Error: " + err));
             }}>
                     {/*modal for info button*/}

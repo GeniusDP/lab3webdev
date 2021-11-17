@@ -1,74 +1,75 @@
-import React, {useEffect, useState} from 'react';
-import startFetchMyQuery from "./GQL/MyQuery";
+import React from 'react';
 import './App.css'
 import InputForm from "./Components/InputForm/InputForm";
 import TodoList from "./Components/TodoList/TodoList";
 import MyDeleteMutation from "./GQL/MyDeleteMutation";
 import NoTodosInfo from "./Components/NoTodosInfo/NoTodosInfo";
 import {Spinner} from "react-bootstrap";
+import {useSubscription} from "@apollo/react-hooks";
+import {Todo} from "./Todo";
+import gql from "graphql-tag";
 
-class Todo{
-    constructor(created_at, description, id, title, updated_at, done) {
-        this.created_at = created_at;
-        this.description = description;
-        this.id = id;
-        this.title = title;
-        this.updated_at = updated_at;
-        this.done = done;
-    }
-}
-
+const script = gql(`
+        subscription MySubscription{
+              todo_list{
+                id
+                done
+                created_at
+                description
+                title
+                updated_at
+              }
+        }
+`   );
 
 const App = () => {
-    const[arrayOfTodos, setArrayOfTodos] = useState([]);
-    //const[refreshEvent, setRefreshEvent] = useState({});//used to refresh all todos in useEffect hook
-    const[dataIsFetching, setDataIsFetching] = useState(true);
-    useEffect(()=>{
-        startFetchMyQuery().then(data => {
-            let newArray = [];
-            newArray = data.todo_list.map((element)=>{
-                return new Todo(element.created_at, element.description, element.id, element.title, element.updated_at, element.done);
-            }).sort((a, b) => a.title < b.title ? -1 : 1);
-            setArrayOfTodos(newArray);
-        }).then(()=>{
-            setDataIsFetching(false);
-        })
-            .catch(err => console.log("Error " + err))
+    let arrayOfTodos = [];
+    const {data, error, loading} = useSubscription(script, {});
 
-    }, []);
+    if(loading){
+        return(
+            <div className={'main-spinner-div'}>
+                <Spinner animation="grow" className={"main-spinner"}/>
+            </div>
+        );
+    }
 
+
+    if(error){
+        console.log("error in Subscription.js: " + error.message);
+    }
+
+    if(data) {
+        let newArray = [];
+        newArray = data.todo_list.map((element) => {
+            return new Todo(element.created_at, element.description, element.id, element.title, element.updated_at, element.done);
+        }).sort((a, b) => a.title < b.title ? -1 : 1);
+        arrayOfTodos = newArray;
+    }
 
 
     const deleteElementById = (idToDelete)=>{
         new MyDeleteMutation(idToDelete).startExecuteDelete()
-            .then(()=>{
-                const tmpArray = [...arrayOfTodos];
-                setArrayOfTodos(tmpArray.filter(element => element.id != idToDelete));
-            })
-            .catch((err)=>console.log(err));
+            .catch(err => console.log(err));
     }
 
 
 
     return (
-        <div className={"App"}>
-            <div className={"formDiv"}>
-                <InputForm/>
-            </div>
-            <div className={"todoListDiv"}>
-                {
-                    dataIsFetching
-                            ?
-                        <Spinner animation="grow" />
-                            :
+            <div className={"App"}>
+                <div className={"formDiv"}>
+                    <InputForm/>
+                </div>
+                <div className={"todoListDiv"}>
+                    {
                         arrayOfTodos.length > 0 || <NoTodosInfo/>
-                }
-                <TodoList
-                    arrayOfTodos={arrayOfTodos}
-                    deleteElementById={deleteElementById}
-                />
+                    }
+                    <TodoList
+                        arrayOfTodos={arrayOfTodos}
+                        deleteElementById={deleteElementById}
+                    />
+                </div>
             </div>
-        </div>
     );
 };
 

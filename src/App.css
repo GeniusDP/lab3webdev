@@ -40,3 +40,18 @@
     background: var(--basic-input-gradient);
     transform: scale(1.2);
 }
+
+
+.main-spinner-div{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-spinner{
+    width: 100px;
+    height: 100px;
+}

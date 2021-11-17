@@ -26,6 +26,7 @@
 
 button{
     width: 20%;
+    text-decoration: none;
 }
 
 .is-done{
@@ -33,4 +34,20 @@ button{
     transform: scale(0.9);
     opacity: 0.9;
     background: var(--disabled-todo-item);
+}
+
+
+.deleted{
+    animation-name: delete-todo;
+    animation-duration: 0.5s;
+}
+
+@keyframes delete-todo {
+    from{
+    }
+
+    to{
+         transform: translateX(100);
+         /*opacity: 0%;*/
+    }
 }
