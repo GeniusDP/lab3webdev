@@ -57,5 +57,8 @@
         "eslint-plugin-react-hooks": "^4.3.0",
         "graphql-tag": "^2.12.6",
         "prettier": "2.4.1"
+    },
+    "engines": {
+        "node": "16.x"
     }
 }
