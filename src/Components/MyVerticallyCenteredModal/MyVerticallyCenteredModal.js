@@ -1,13 +1,15 @@
 import { Button, Modal } from 'react-bootstrap';
 
-export default function MyVerticallyCenteredModal({
-    onHide,
-    show,
-    headerText,
-    children,
-}) {
+    export default function MyVerticallyCenteredModal({
+        onHide,
+        show,
+        headerText,
+        children,
+    }) {
+
+    const makeDone = (e) => e.stopPropagation();
     return (
-        <div onClick={(e) => e.stopPropagation()}>
+        <div onClick={makeDone}>
             <Modal
                 show={show}
                 onHide={onHide}

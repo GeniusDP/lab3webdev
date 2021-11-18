@@ -29,11 +29,13 @@ const InputForm = () => {
         }
     }
 
+
+    const hide = () => setShowModal(false);
     return (
         <form onSubmit={onSubmitForm}>
             <MyVerticallyCenteredModal
                 show={showModal}
-                onHide={() => setShowModal(false)}
+                onHide={hide}
                 headerText={'Forbidden action!'}
             >
                 <div>{'You cannot add a new todo with empty fields!'}</div>
