@@ -1,4 +1,4 @@
-export default class MyInsertMutation{
+export default class MyInsertMutation {
     constructor(title, description) {
         this.title = title;
         this.description = description;
@@ -25,32 +25,26 @@ export default class MyInsertMutation{
 
     async fetchGraphQL(operationsDoc, operationName, variables) {
         const result = await fetch(
-            "https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql",
+            'https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql',
             {
-                headers:{
-                    "content-type":"application/json",
-                    "x-hasura-admin-secret":"mySecret"
+                headers: {
+                    'content-type': 'application/json',
+                    'x-hasura-admin-secret': 'mySecret',
                 },
-                method: "POST",
+                method: 'POST',
                 body: JSON.stringify({
                     query: operationsDoc,
                     variables: variables,
-                    operationName: operationName
-                })
+                    operationName: operationName,
+                }),
             }
         );
 
         return await result.json();
     }
 
-
-
     executeMyMutation() {
-        return this.fetchGraphQL(
-            this.operationsDoc,
-            "MyMutation",
-            {}
-        );
+        return this.fetchGraphQL(this.operationsDoc, 'MyMutation', {});
     }
 
     async startExecuteMyMutation() {
@@ -64,5 +58,4 @@ export default class MyInsertMutation{
         // do something great with this precious data
         return data;
     }
-
 }

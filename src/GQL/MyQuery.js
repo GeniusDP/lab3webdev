@@ -1,16 +1,17 @@
 async function fetchGraphQL(operationsDoc, operationName, variables) {
-    const result = await fetch("https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql",
+    const result = await fetch(
+        'https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql',
         {
-            headers:{
-                "content-type": "application/json",
-                "x-hasura-admin-secret":"mySecret"
+            headers: {
+                'content-type': 'application/json',
+                'x-hasura-admin-secret': 'mySecret',
             },
-            method: "POST",
+            method: 'POST',
             body: JSON.stringify({
                 query: operationsDoc,
                 variables: variables,
-                operationName: operationName
-            })
+                operationName: operationName,
+            }),
         }
     );
 
@@ -31,11 +32,7 @@ const operationsDoc = `
 `;
 
 function fetchMyQuery() {
-    return fetchGraphQL(
-        operationsDoc,
-        "MyQuery",
-        {}
-    );
+    return fetchGraphQL(operationsDoc, 'MyQuery', {});
 }
 
 async function startFetchMyQuery() {

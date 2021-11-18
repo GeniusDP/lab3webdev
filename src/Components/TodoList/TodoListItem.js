@@ -1,54 +1,60 @@
-import React, {useState} from 'react';
-import './TodoListItem.scss'
-import MyVerticallyCenteredModal from "../MyVerticallyCenteredModal/MyVerticallyCenteredModal";
-import MyUpdateMutation from "../../GQL/MyUpdateMutation";
+import { useState } from 'react';
+import './TodoListItem.scss';
+import MyVerticallyCenteredModal from '../MyVerticallyCenteredModal/MyVerticallyCenteredModal';
+import MyUpdateMutation from '../../GQL/MyUpdateMutation';
 
-const TodoListItem = ({created_at, description, id, title, updated_at, deleteElementById, isDone}) => {
-    const[done, setDone] = useState(isDone);
-    const[showInfoModal, setShowInfoModal] = useState(false);
-    const[showDeleteModal, setShowDeleteModal] = useState(false);
+const TodoListItem = ({
+    created_at,
+    description,
+    id,
+    title,
+    deleteElementById,
+    isDone,
+}) => {
+    const [done, setDone] = useState(isDone);
+    const [showInfoModal, setShowInfoModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-    const classNames = ["todoListItem"];
-    if(done){
-        classNames.push("is-done");
+    const classNames = ['todoListItem'];
+    if (done) {
+        classNames.push('is-done');
     }
     return (
         <div
-            className={classNames.join(" ")}
-            onClick={event => {
-                 event.preventDefault();
-                 setDone(!done);
-                 new MyUpdateMutation(id, done).startExecuteUpdate()
-                     .catch(err => console.log("Error: " + err));
-            }}>
-                    {/*modal for info button*/}
-                    <MyVerticallyCenteredModal
-                        show={showInfoModal}
-                        onHide={() => setShowInfoModal(false)}
-                        headerText={"Details about this todo..."}
-                    >
-                        <div>{"Title: " + title}</div>
-                        <div>{"Description: " + description}</div>
-                        <div>{"Create time: " + created_at}</div>
-                    </MyVerticallyCenteredModal>
+            className={classNames.join(' ')}
+            onClick={(event) => {
+                event.preventDefault();
+                setDone(!done);
+                new MyUpdateMutation(id, done)
+                    .startExecuteUpdate()
+                    .catch((err) => console.log('Error: ' + err));
+            }}
+        >
+            {/*modal for info button*/}
+            <MyVerticallyCenteredModal
+                show={showInfoModal}
+                onHide={() => setShowInfoModal(false)}
+                headerText={'Details about this todo...'}
+            >
+                <div>{'Title: ' + title}</div>
+                <div>{'Description: ' + description}</div>
+                <div>{'Create time: ' + created_at}</div>
+            </MyVerticallyCenteredModal>
 
-
-                    {/*modal for delete button*/}
-                    <MyVerticallyCenteredModal
-                        show={showDeleteModal}
-                        onHide={() => setShowDeleteModal(false)}
-                        headerText={"Forbidden action!"}
-                    >
-                        {
-                            "You have to mark it like \"done\" before deleting! Click on todo to mark it \"done\"."
-                        }
-                    </MyVerticallyCenteredModal>
-            <div className={"itemTitle"}>
-                {title}
-            </div>
+            {/*modal for delete button*/}
+            <MyVerticallyCenteredModal
+                show={showDeleteModal}
+                onHide={() => setShowDeleteModal(false)}
+                headerText={'Forbidden action!'}
+            >
+                {
+                    'You have to mark it like "done" before deleting! Click on todo to mark it "done".'
+                }
+            </MyVerticallyCenteredModal>
+            <div className={'itemTitle'}>{title}</div>
             <button
-                className={"btn btn-warning"}
-                onClick={(event)=>{
+                className={'btn btn-warning'}
+                onClick={(event) => {
                     event.stopPropagation();
                     setShowInfoModal(true);
                 }}
@@ -56,12 +62,12 @@ const TodoListItem = ({created_at, description, id, title, updated_at, deleteEle
                 &hellip;
             </button>
             <button
-                className={"btn btn-danger"}
-                onClick={(event)=>{
+                className={'btn btn-danger'}
+                onClick={(event) => {
                     event.stopPropagation();
-                    if(done){
+                    if (done) {
                         deleteElementById(id);
-                    }else{
+                    } else {
                         setShowDeleteModal(true);
                     }
                 }}

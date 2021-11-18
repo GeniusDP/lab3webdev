@@ -1,4 +1,4 @@
-export default class MyDeleteMutation{
+export default class MyDeleteMutation {
     constructor(idToDelete) {
         this.idToDelete = idToDelete;
         this.operationsDoc = `
@@ -8,36 +8,29 @@ export default class MyDeleteMutation{
             }
           }
         `;
-
     }
     async fetchGraphQL(operationsDoc, operationName, variables) {
         const result = await fetch(
-            "https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql",
+            'https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql',
             {
-                headers:{
-                    "content-type":"application/json",
-                    "x-hasura-admin-secret":"mySecret"
+                headers: {
+                    'content-type': 'application/json',
+                    'x-hasura-admin-secret': 'mySecret',
                 },
-                method: "POST",
+                method: 'POST',
                 body: JSON.stringify({
                     query: operationsDoc,
                     variables: variables,
-                    operationName: operationName
-                })
+                    operationName: operationName,
+                }),
             }
         );
 
         return await result.json();
     }
 
-
-
     executeDelete() {
-        return this.fetchGraphQL(
-            this.operationsDoc,
-            "Delete",
-            {}
-        );
+        return this.fetchGraphQL(this.operationsDoc, 'Delete', {});
     }
 
     async startExecuteDelete() {
@@ -51,6 +44,4 @@ export default class MyDeleteMutation{
         // do something great with this precious data
         return data;
     }
-
-
 }

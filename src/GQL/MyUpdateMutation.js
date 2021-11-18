@@ -1,10 +1,11 @@
-export default class MyUpdateMutation{
+export default class MyUpdateMutation {
     constructor(id, isDone) {
         this.id = id;
         this.isDone = isDone;
         this.operationsDoc = `
           mutation Update {
-              update_todo_list(_set: {done: ${!this.isDone}}, where: {id: {_eq: ${this.id}}}) {
+              update_todo_list(_set: {done: ${!this
+                  .isDone}}, where: {id: {_eq: ${this.id}}}) {
                 returning {
                   updated_at
                   title
@@ -22,31 +23,26 @@ export default class MyUpdateMutation{
     }
     async fetchGraphQL(operationsDoc, operationName, variables) {
         const result = await fetch(
-            "https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql",
+            'https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql',
             {
-                headers:{
-                    "content-type": "application/json",
-                    "x-hasura-admin-secret":"mySecret"
+                headers: {
+                    'content-type': 'application/json',
+                    'x-hasura-admin-secret': 'mySecret',
                 },
-                method: "POST",
+                method: 'POST',
                 body: JSON.stringify({
                     query: operationsDoc,
                     variables: variables,
-                    operationName: operationName
-                })
+                    operationName: operationName,
+                }),
             }
         );
 
         return await result.json();
     }
 
-
     executeUpdate() {
-        return this.fetchGraphQL(
-            this.operationsDoc,
-            "Update",
-            {}
-        );
+        return this.fetchGraphQL(this.operationsDoc, 'Update', {});
     }
 
     async startExecuteUpdate() {
@@ -60,5 +56,4 @@ export default class MyUpdateMutation{
         // do something great with this precious data
         return data;
     }
-
 }
