@@ -38,6 +38,7 @@ const App = () => {
     }
 
     if (data) {
+
         let newArray = [];
         newArray = data.todo_list
             .map((element) => {
@@ -52,6 +53,7 @@ const App = () => {
             })
             .sort((a, b) => (a.title < b.title ? -1 : 1));
         arrayOfTodos = newArray;
+        console.log(arrayOfTodos);
     }
 
     const deleteElementById = (idToDelete) => {

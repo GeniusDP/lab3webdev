@@ -11,12 +11,10 @@ const TodoListItem = ({
     deleteElementById,
     isDone,
 }) => {
-    const [done, setDone] = useState(isDone);
     const [showInfoModal, setShowInfoModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-
     const classNames = ['todoListItem'];
-    if (done) {
+    if (isDone) {
         classNames.push('is-done');
     }
     return (
@@ -24,8 +22,8 @@ const TodoListItem = ({
             className={classNames.join(' ')}
             onClick={(event) => {
                 event.preventDefault();
-                setDone(!done);
-                new MyUpdateMutation(id, done)
+                //setDone(isDone);
+                new MyUpdateMutation(id, isDone)
                     .startExecuteUpdate()
                     .catch((err) => console.log('Error: ' + err));
             }}
@@ -65,7 +63,7 @@ const TodoListItem = ({
                 className={'btn btn-danger'}
                 onClick={(event) => {
                     event.stopPropagation();
-                    if (done) {
+                    if (isDone) {
                         deleteElementById(id);
                     } else {
                         setShowDeleteModal(true);
