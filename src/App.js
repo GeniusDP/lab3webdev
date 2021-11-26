@@ -34,24 +34,24 @@ const App = () => {
     }
 
     if (error) {
-        console.log('error in Subscription.js: ' + error.message);
+        console.log('error in Subscription.js: ' + error?.message);
     }
 
     if (data) {
 
         let newArray = [];
-        newArray = data.todo_list
+        newArray = data?.todo_list
             .map((element) => {
                 return new Todo(
-                    element.created_at,
-                    element.description,
-                    element.id,
-                    element.title,
-                    element.updated_at,
-                    element.done
+                    element?.created_at,
+                    element?.description,
+                    element?.id,
+                    element?.title,
+                    element?.updated_at,
+                    element?.done
                 );
             })
-            .sort((a, b) => (a.title < b.title ? -1 : 1));
+            .sort((a, b) => (a?.title < b?.title ? -1 : 1));
         arrayOfTodos = newArray;
         console.log(arrayOfTodos);
     }
@@ -68,7 +68,7 @@ const App = () => {
                 <InputForm />
             </div>
             <div className={'todoListDiv'}>
-                {arrayOfTodos.length > 0 || <NoTodosInfo />}
+                {arrayOfTodos?.length > 0 || <NoTodosInfo />}
                 <TodoList
                     arrayOfTodos={arrayOfTodos}
                     deleteElementById={deleteElementById}
