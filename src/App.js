@@ -38,7 +38,6 @@ const App = () => {
     }
 
     if (data) {
-
         let newArray = [];
         newArray = data?.todo_list
             .map((element) => {

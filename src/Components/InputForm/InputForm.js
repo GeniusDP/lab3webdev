@@ -29,7 +29,6 @@ const InputForm = () => {
         }
     }
 
-
     const hide = () => setShowModal(false);
     return (
         <form onSubmit={onSubmitForm}>

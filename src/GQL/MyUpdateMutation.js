@@ -23,7 +23,7 @@ export default class MyUpdateMutation {
     }
     async fetchGraphQL(operationsDoc, operationName, variables) {
         const result = await fetch(
-          'https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql',
+            'https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql',
             {
                 headers: {
                     'content-type': 'application/json',

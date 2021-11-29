@@ -19,28 +19,25 @@ const TodoListItem = ({
     }
 
     function mainDivOnClick(event) {
-            event.preventDefault();
-            new MyUpdateMutation(id, isDone)
-                .startExecuteUpdate()
-                .catch((err) => console.log('Error: ' + err));
+        event.preventDefault();
+        new MyUpdateMutation(id, isDone)
+            .startExecuteUpdate()
+            .catch((err) => console.log('Error: ' + err));
     }
 
     function helpButtonWarning(event) {
-            event.stopPropagation();
-            setShowInfoModal(true);
+        event.stopPropagation();
+        setShowInfoModal(true);
     }
 
     function deleteButtonOnClick(event) {
-            event.stopPropagation();
-            if (isDone)deleteElementById(id);
-                else setShowDeleteModal(true);
+        event.stopPropagation();
+        if (isDone) deleteElementById(id);
+        else setShowDeleteModal(true);
     }
 
     return (
-        <div
-            className={classNames.join(' ')}
-            onClick={mainDivOnClick}
-        >
+        <div className={classNames.join(' ')} onClick={mainDivOnClick}>
             {/*modal for info button*/}
             <MyVerticallyCenteredModal
                 show={showInfoModal}
@@ -63,16 +60,10 @@ const TodoListItem = ({
                 }
             </MyVerticallyCenteredModal>
             <div className={'itemTitle'}>{title}</div>
-            <button
-                className={'btn btn-warning'}
-                onClick={helpButtonWarning}
-            >
+            <button className={'btn btn-warning'} onClick={helpButtonWarning}>
                 &hellip;
             </button>
-            <button
-                className={'btn btn-danger'}
-                onClick={deleteButtonOnClick}
-            >
+            <button className={'btn btn-danger'} onClick={deleteButtonOnClick}>
                 &#10006;
             </button>
         </div>
