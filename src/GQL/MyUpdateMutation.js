@@ -38,7 +38,7 @@ export default class MyUpdateMutation {
             }
         )
         .catch((error)=>{
-            throw error
+            return error
         });
         return await result.json();
     }
@@ -52,7 +52,7 @@ export default class MyUpdateMutation {
 
         if (errors) {
             // handle those errors like a pro
-            throw errors;
+            return errors;
         }
 
         // do something great with this precious data

@@ -19,10 +19,15 @@ const InputForm = () => {
                 .startExecuteMyMutation()
                 .then(() => {
                     //cleaning the form
-                    titleInputValue.value = '';
-                    textAreaValue.value = '';
+                    setTitleInputValue('');
+                    setTextAreaValue('');
                 })
-                .catch( () => setShowErrorModal(true) );
+                .catch( (err) => {
+                        console.log('---was here---')
+                        console.log(err)
+                        setShowErrorModal(true)
+                    }
+                );
         } else {
             setShowModal(true);
         }

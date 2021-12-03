@@ -1,3 +1,5 @@
+import {logDOM} from "@testing-library/react";
+
 async function fetchGraphQL(operationsDoc, operationName, variables) {
     const result = await fetch(
         'https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql',
@@ -13,7 +15,9 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
                 operationName: operationName,
             }),
         }
-    );
+    ).catch((error)=>{
+        return error
+    });
 
     return await result.json();
 }
