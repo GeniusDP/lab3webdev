@@ -30,6 +30,7 @@ export default class MyUpdateMutation {
                     'content-type': 'application/json',
                     // eslint-disable-next-line no-undef
                     'x-hasura-admin-secret':
+                    // eslint-disable-next-line no-undef
                         process.env['REACT_APP_X_HASURA_ADMIN_SECRET'],
                 },
                 method: 'POST',
