@@ -1,4 +1,4 @@
-import './App.scss';
+import './App.css';
 import InputForm from './Components/InputForm/InputForm';
 import TodoList from './Components/TodoList/TodoList';
 import MyDeleteMutation from './GQL/MyDeleteMutation';

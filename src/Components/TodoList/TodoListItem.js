@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './TodoListItem.scss';
+import './TodoListItem.css';
 import MyVerticallyCenteredModal from '../MyVerticallyCenteredModal/MyVerticallyCenteredModal';
 import MyUpdateMutation from '../../GQL/MyUpdateMutation';
 

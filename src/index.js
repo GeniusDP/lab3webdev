@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import './index.scss';
+import './index.css';
 import App from './App';
 import apolloClient from './GQL/apolloSetup';
 import { ApolloProvider } from '@apollo/client';

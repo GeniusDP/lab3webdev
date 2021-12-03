@@ -1,5 +1,5 @@
 import TodoListItem from './TodoListItem';
-import './TodoListItem.scss';
+import './TodoListItem.css';
 const TodoList = ({ arrayOfTodos, deleteElementById }) => {
     const todoItems = arrayOfTodos.map((el) => (
         <TodoListItem

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './InputForm.scss';
+import './InputForm.css';
 import MyInsertMutation from '../../GQL/MyInsertMutation';
 import MyVerticallyCenteredModal from '../MyVerticallyCenteredModal/MyVerticallyCenteredModal';
 
