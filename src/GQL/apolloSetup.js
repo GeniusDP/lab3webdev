@@ -13,7 +13,8 @@ const wsLink = new WebSocketLink({
             headers: {
                 'content-type': 'application/json',
                 // eslint-disable-next-line no-undef
-                'x-hasura-admin-secret': process.env["REACT_APP_X_HASURA_ADMIN_SECRET"]
+                'x-hasura-admin-secret':
+                    process.env['REACT_APP_X_HASURA_ADMIN_SECRET'],
             },
         },
     },

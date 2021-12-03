@@ -25,13 +25,14 @@ export default class MyInsertMutation {
 
     async fetchGraphQL(operationsDoc, operationName, variables) {
         const result = await fetch(
-                // eslint-disable-next-line no-undef
-                process.env["REACT_APP_SRC"],
+            // eslint-disable-next-line no-undef
+            process.env['REACT_APP_SRC'],
             {
                 headers: {
                     'content-type': 'application/json',
                     // eslint-disable-next-line no-undef
-                    'x-hasura-admin-secret': process.env["REACT_APP_X_HASURA_ADMIN_SECRET"]
+                    'x-hasura-admin-secret':
+                        process.env['REACT_APP_X_HASURA_ADMIN_SECRET'],
                 },
                 method: 'POST',
                 body: JSON.stringify({
