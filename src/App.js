@@ -6,7 +6,7 @@ import NoTodosInfo from './Components/NoTodosInfo/NoTodosInfo';
 import { Spinner } from 'react-bootstrap';
 import { useSubscription } from '@apollo/react-hooks';
 import { Todo } from './Todo';
-import gql from 'graphql-tag';
+import { gql } from "@apollo/client";
 
 const script = gql(`
         subscription MySubscription{
