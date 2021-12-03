@@ -29,9 +29,16 @@ const InputForm = () => {
         } else {
             setShowModal(true);
         }
+        clearAll()
     }
 
     const hide = () => setShowModal(false);
+
+    function clearAll() {
+            setTextAreaValue('');
+            setTitleInputValue('');
+    }
+
     return (
         <form onSubmit={onSubmitForm}>
             <MyVerticallyCenteredModal
@@ -66,6 +73,7 @@ const InputForm = () => {
                 <button
                     className={'btn btn-danger add-new-todo-button'}
                     type={'reset'}
+                    onClick={clearAll}
                 >
                     CLEAR ALL TODO
                 </button>
