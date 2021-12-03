@@ -31,5 +31,6 @@ jobs:
             - name: Eslint working flow
               run: |
                   npm run lint
-                  npm run fmt:check
                   npm run fmt
+                  npm run fmt:check
+
