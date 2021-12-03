@@ -22,8 +22,8 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "npx eslint .",
-        "fix": "npx eslint --fix .",
-        "fmt": "npx prettier --write .",
+        "fix": "npx eslint --fix . --ignore-path .gitignore",
+        "fmt": "npx prettier --write . --ignore-path .gitignore",
         "heroku-postbuild": "npm run build"
     },
     "eslintConfig": {
