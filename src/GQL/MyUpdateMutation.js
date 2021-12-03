@@ -36,7 +36,10 @@ export default class MyUpdateMutation {
                     operationName: operationName,
                 }),
             }
-        );
+        )
+        .catch((error)=>{
+            throw error
+        });
         return await result.json();
     }
 
@@ -49,7 +52,7 @@ export default class MyUpdateMutation {
 
         if (errors) {
             // handle those errors like a pro
-            return errors;
+            throw errors;
         }
 
         // do something great with this precious data

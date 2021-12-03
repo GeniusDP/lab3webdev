@@ -5,6 +5,7 @@ import MyVerticallyCenteredModal from '../MyVerticallyCenteredModal/MyVertically
 
 const InputForm = () => {
     const [showModal, setShowModal] = useState(false);
+    const [showErrorModal, setShowErrorModal] = useState(false);
     const [titleInputValue, setTitleInputValue] = useState('');
     const [textAreaValue, setTextAreaValue] = useState('');
     function onSubmitForm(event) {
@@ -16,28 +17,30 @@ const InputForm = () => {
                     'none'
             )
                 .startExecuteMyMutation()
-                .then((r) => console.log('r = ' + r))
                 .then(() => {
                     //cleaning the form
-                    titleInputValue.value =
-                        '';
+                    titleInputValue.value = '';
                     textAreaValue.value = '';
                 })
-                .catch((err) => {
-                    console.log(err);
-                });
+                .catch( () => setShowErrorModal(true) );
         } else {
             setShowModal(true);
         }
         clearAll()
     }
 
-    const hide = () => setShowModal(false);
+    const hide = () => {
+        setShowModal(false);
+    }
 
     function clearAll() {
             setTextAreaValue('');
             setTitleInputValue('');
     }
+
+    const hideErrorModal = ()=> {
+        setShowErrorModal(false);
+    };
 
     return (
         <form onSubmit={onSubmitForm}>
@@ -47,6 +50,13 @@ const InputForm = () => {
                 headerText={'Forbidden action!'}
             >
                 <div>{'You cannot add a new todo with empty fields!'}</div>
+            </MyVerticallyCenteredModal>
+            <MyVerticallyCenteredModal
+                show={showErrorModal}
+                onHide={hideErrorModal}
+                headerText={'Lost internet connection!'}
+            >
+                <div>{'Your internet connection is not stable. Try later. This operation was denied.'}</div>
             </MyVerticallyCenteredModal>
             <div className={'let-is'}>{'Let is add a new todo!'}</div>
             <input

@@ -11,6 +11,7 @@ const TodoListItem = ({
     deleteElementById,
     isDone,
 }) => {
+    const [showErrorModal, setShowErrorModal] = useState(false);
     const [showInfoModal, setShowInfoModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const classNames = ['todoListItem'];
@@ -22,7 +23,7 @@ const TodoListItem = ({
         event.preventDefault();
         new MyUpdateMutation(id, isDone)
             .startExecuteUpdate()
-            .catch((err) => console.log('Error: ' + err));
+            .catch(() => setShowErrorModal(true));
     }
 
     function helpButtonWarning(event) {
@@ -35,7 +36,9 @@ const TodoListItem = ({
         if (isDone) deleteElementById(id);
         else setShowDeleteModal(true);
     }
-
+    const hideErrorModal = ()=> {
+        setShowErrorModal(false);
+    };
     return (
         <div className={classNames.join(' ')} onClick={mainDivOnClick}>
             {/*modal for info button*/}
@@ -48,7 +51,13 @@ const TodoListItem = ({
                 <div>{'Description: ' + description}</div>
                 <div>{'Create time: ' + created_at}</div>
             </MyVerticallyCenteredModal>
-
+            <MyVerticallyCenteredModal
+                show={showErrorModal}
+                onHide={hideErrorModal}
+                headerText={'Lost internet connection!'}
+            >
+                <div>{'Your internet connection is not stable. Try later. This operation was denied.'}</div>
+            </MyVerticallyCenteredModal>
             {/*modal for delete button*/}
             <MyVerticallyCenteredModal
                 show={showDeleteModal}

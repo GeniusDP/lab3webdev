@@ -52,14 +52,14 @@ const App = () => {
             })
             .sort((a, b) => (a?.title < b?.title ? -1 : 1));
         arrayOfTodos = newArray;
-        console.log(arrayOfTodos);
     }
 
     const deleteElementById = (idToDelete) => {
         new MyDeleteMutation(idToDelete)
             .startExecuteDelete()
-            .catch((err) => console.log(err));
+            .catch((error)=>console.log(error));
     };
+
 
     return (
         <div className={'App'}>

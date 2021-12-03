@@ -24,7 +24,9 @@ export default class MyDeleteMutation {
                     operationName: operationName,
                 }),
             }
-        );
+        ).catch((error)=>{
+            throw error
+        });
 
         return await result.json();
     }
@@ -38,7 +40,7 @@ export default class MyDeleteMutation {
 
         if (errors) {
             // handle those errors like a pro
-            return errors;
+            throw errors;
         }
 
         // do something great with this precious data
