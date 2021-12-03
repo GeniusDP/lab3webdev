@@ -24,7 +24,8 @@
         "lint": "npx eslint .",
         "fix": "npx eslint --fix . --ignore-path .gitignore",
         "fmt": "npx prettier --write . --ignore-path .gitignore",
-        "heroku-postbuild": "npm run build"
+        "heroku-postbuild": "npm run build",
+        "fmt:check": "npx prettier --check . --ignore-path .gitignore"
     },
     "eslintConfig": {
         "extends": [
