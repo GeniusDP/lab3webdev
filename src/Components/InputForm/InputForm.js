@@ -5,21 +5,23 @@ import MyVerticallyCenteredModal from '../MyVerticallyCenteredModal/MyVertically
 
 const InputForm = () => {
     const [showModal, setShowModal] = useState(false);
+    const [titleInputValue, setTitleInputValue] = useState('');
+    const [textAreaValue, setTextAreaValue] = useState('');
     function onSubmitForm(event) {
         event.preventDefault();
-        if (document.forms[0].elements.namedItem('titleInput').value.trim()) {
+        if (titleInputValue.trim()) {
             new MyInsertMutation(
-                document.forms[0].elements.namedItem('titleInput').value.trim(),
-                document.forms[0].elements.namedItem('textArea').value.trim() ||
+                titleInputValue.trim(),
+                textAreaValue.trim() ||
                     'none'
             )
                 .startExecuteMyMutation()
                 .then((r) => console.log('r = ' + r))
                 .then(() => {
                     //cleaning the form
-                    document.forms[0].elements.namedItem('titleInput').value =
+                    titleInputValue.value =
                         '';
-                    document.forms[0].elements.namedItem('textArea').value = '';
+                    textAreaValue.value = '';
                 })
                 .catch((err) => {
                     console.log(err);
@@ -44,11 +46,15 @@ const InputForm = () => {
                 name={'titleInput'}
                 className={'titleInput'}
                 placeholder={'title of new todo'}
+                value={titleInputValue}
+                onChange={(event) => setTitleInputValue(event.target.value)}
             />
             <textarea
                 className={'textarea'}
                 name={'textArea'}
                 placeholder={'description of the todo'}
+                value={textAreaValue}
+                onChange={(event) => setTextAreaValue(event.target.value)}
             />
             <div className={'btn-group'}>
                 <button
