@@ -24,8 +24,8 @@ export default class MyDeleteMutation {
                     operationName: operationName,
                 }),
             }
-        ).catch((error)=>{
-            return error
+        ).catch((error) => {
+            return error;
         });
 
         return await result.json();

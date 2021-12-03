@@ -36,7 +36,7 @@ const TodoListItem = ({
         if (isDone) deleteElementById(id);
         else setShowDeleteModal(true);
     }
-    const hideErrorModal = ()=> {
+    const hideErrorModal = () => {
         setShowErrorModal(false);
     };
     return (
@@ -56,7 +56,11 @@ const TodoListItem = ({
                 onHide={hideErrorModal}
                 headerText={'Lost internet connection!'}
             >
-                <div>{'Your internet connection is not stable. Try later. This operation was denied.'}</div>
+                <div>
+                    {
+                        'Your internet connection is not stable. Try later. This operation was denied.'
+                    }
+                </div>
             </MyVerticallyCenteredModal>
             {/*modal for delete button*/}
             <MyVerticallyCenteredModal

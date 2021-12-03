@@ -38,9 +38,9 @@ export default class MyInsertMutation {
                     operationName: operationName,
                 }),
             }
-        ).catch((error)=>{
-            throw error
-        });;
+        ).catch((error) => {
+            throw error;
+        });
 
         return await result.json();
     }

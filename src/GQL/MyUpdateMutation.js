@@ -36,9 +36,8 @@ export default class MyUpdateMutation {
                     operationName: operationName,
                 }),
             }
-        )
-        .catch((error)=>{
-            return error
+        ).catch((error) => {
+            return error;
         });
         return await result.json();
     }

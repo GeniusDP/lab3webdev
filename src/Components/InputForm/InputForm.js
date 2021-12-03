@@ -13,8 +13,7 @@ const InputForm = () => {
         if (titleInputValue.trim()) {
             new MyInsertMutation(
                 titleInputValue.trim(),
-                textAreaValue.trim() ||
-                    'none'
+                textAreaValue.trim() || 'none'
             )
                 .startExecuteMyMutation()
                 .then(() => {
@@ -22,28 +21,27 @@ const InputForm = () => {
                     setTitleInputValue('');
                     setTextAreaValue('');
                 })
-                .catch( (err) => {
-                        console.log('---was here---')
-                        console.log(err)
-                        setShowErrorModal(true)
-                    }
-                );
+                .catch((err) => {
+                    console.log('---was here---');
+                    console.log(err);
+                    setShowErrorModal(true);
+                });
         } else {
             setShowModal(true);
         }
-        clearAll()
+        clearAll();
     }
 
     const hide = () => {
         setShowModal(false);
-    }
+    };
 
     function clearAll() {
-            setTextAreaValue('');
-            setTitleInputValue('');
+        setTextAreaValue('');
+        setTitleInputValue('');
     }
 
-    const hideErrorModal = ()=> {
+    const hideErrorModal = () => {
         setShowErrorModal(false);
     };
 
@@ -61,7 +59,11 @@ const InputForm = () => {
                 onHide={hideErrorModal}
                 headerText={'Lost internet connection!'}
             >
-                <div>{'Your internet connection is not stable. Try later. This operation was denied.'}</div>
+                <div>
+                    {
+                        'Your internet connection is not stable. Try later. This operation was denied.'
+                    }
+                </div>
             </MyVerticallyCenteredModal>
             <div className={'let-is'}>{'Let is add a new todo!'}</div>
             <input

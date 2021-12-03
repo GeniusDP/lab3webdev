@@ -57,9 +57,8 @@ const App = () => {
     const deleteElementById = (idToDelete) => {
         new MyDeleteMutation(idToDelete)
             .startExecuteDelete()
-            .catch((error)=>console.log(error));
+            .catch((error) => console.log(error));
     };
-
 
     return (
         <div className={'App'}>
