@@ -1,10 +1,12 @@
 async function fetchGraphQL(operationsDoc, operationName, variables) {
     const result = await fetch(
-        'https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql',
+            // eslint-disable-next-line no-undef
+            process.env["REACT_APP_SRC"],//'https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql',
         {
             headers: {
                 'content-type': 'application/json',
-                'x-hasura-admin-secret': 'mySecret',
+                // eslint-disable-next-line no-undef
+                'x-hasura-admin-secret': process.env["REACT_APP_X_HASURA_ADMIN_SECRET"]//'mySecret',
             },
             method: 'POST',
             body: JSON.stringify({

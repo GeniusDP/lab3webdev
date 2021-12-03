@@ -12,14 +12,16 @@ const wsLink = new WebSocketLink({
         connectionParams: {
             headers: {
                 'content-type': 'application/json',
-                'x-hasura-admin-secret': 'mySecret',
+                // eslint-disable-next-line no-undef
+                'x-hasura-admin-secret': process.env["REACT_APP_X_HASURA_ADMIN_SECRET"]//'mySecret',
             },
         },
     },
 });
 
 const httpLink = new HttpLink({
-    uri: 'https://hasura-tutorial-zaranik.herokuapp.com/v1/graphql',
+    // eslint-disable-next-line no-undef
+    uri: process.env.REACT_APP_SRC,
 });
 
 const link = split(

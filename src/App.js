@@ -22,6 +22,12 @@ const script = gql(`
 `);
 
 const App = () => {
+    // eslint-disable-next-line no-undef
+    console.log(process.env.REACT_APP_SRC);
+    // eslint-disable-next-line no-undef
+    console.log(process.env.REACT_APP_X_HASURA_ADMIN_SECRET);
+    // eslint-disable-next-line no-undef
+    console.log(process.env.NUM);
     let arrayOfTodos = [];
     const { data, error, loading } = useSubscription(script, {});
 
