@@ -8,8 +8,7 @@
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
-        "plugin:import/recommended",
-        "plugin:sonarjs/recommended"
+        "plugin:import/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -21,9 +20,7 @@
     "plugins": ["react"],
     "rules": {
         "react/prop-types": "off",
-        "semi": 2,
-        "sonarjs/cognitive-complexity": "error",
-        "sonarjs/no-identical-expressions": "error"
+        "semi": 2
     },
     "settings": {
         "import/resolver": {
