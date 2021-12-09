@@ -22,11 +22,12 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint": "npx eslint .",
-        "fix": "npx eslint --fix . --ignore-path .gitignore",
+        "lint": "npx eslint **/*.js --ignore-path .gitignore --no-error-on-unmatched-pattern",
+        "fix": "npx eslint --fix **/*.js --ignore-path .gitignore --no-error-on-unmatched-pattern",
         "fmt": "npx prettier --write . --ignore-path .gitignore",
+        "fmt:check": "npx prettier --check . --ignore-path .gitignore",
         "heroku-postbuild": "npm run build",
-        "fmt:check": "npx prettier --check . --ignore-path .gitignore"
+        "prepare": "husky install"
     },
     "eslintConfig": {
         "extends": [
