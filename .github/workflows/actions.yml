@@ -6,6 +6,9 @@ name: Node.js CI
 on:
     push:
         branches: [master]
+    pull_request:
+        branches:
+            - firstPR
 
 jobs:
     build:
@@ -33,4 +36,3 @@ jobs:
                   npm run lint
                   npm run fmt
                   npm run fmt:check
-
