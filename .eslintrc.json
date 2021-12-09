@@ -18,7 +18,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": ["react", "sonarjs"],
+    "plugins": ["react"],
     "rules": {
         "react/prop-types": "off",
         "semi": 2,
