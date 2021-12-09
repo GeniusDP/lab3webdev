@@ -13,7 +13,10 @@
         "react-dom": "^17.0.2",
         "react-scripts": "4.0.3",
         "subscriptions-transport-ws": "^0.11.0",
-        "web-vitals": "^1.1.2"
+        "web-vitals": "^1.1.2",
+        "apollo-boost": "^0.4.9",
+        "apollo-link": "^1.2.14",
+        "apollo-link-ws": "^1.0.20"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -47,9 +50,6 @@
         "@testing-library/jest-dom": "^5.15.0",
         "@testing-library/react": "^11.2.7",
         "@testing-library/user-event": "^12.8.3",
-        "apollo-boost": "^0.4.9",
-        "apollo-link": "^1.2.14",
-        "apollo-link-ws": "^1.0.20",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-import": "^2.25.3",
         "eslint-plugin-jsx-a11y": "^6.5.1",
