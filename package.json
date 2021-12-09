@@ -16,7 +16,8 @@
         "web-vitals": "^1.1.2",
         "apollo-boost": "^0.4.9",
         "apollo-link": "^1.2.14",
-        "apollo-link-ws": "^1.0.20"
+        "apollo-link-ws": "^1.0.20",
+        "graphql-tag": "^2.12.6"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -55,7 +56,6 @@
         "eslint-plugin-jsx-a11y": "^6.5.1",
         "eslint-plugin-react": "^7.27.0",
         "eslint-plugin-react-hooks": "^4.3.0",
-        "graphql-tag": "^2.12.6",
         "husky": "^7.0.4",
         "prettier": "2.4.1",
         "sonarjs": "^1.0.0",
