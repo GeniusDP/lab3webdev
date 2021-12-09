@@ -8,8 +8,7 @@
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
-        "plugin:import/recommended",
-        "prettier"
+        "plugin:import/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
