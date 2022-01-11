@@ -1,0 +1,44 @@
+form {
+    width: 100%;
+    height: 100%;
+    background: var(--backAppColor);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.textarea {
+    width: 90%; /* Ширина поля в процентах */
+    height: 200px; /* Высота поля в пикселах */
+    resize: none; /* Запрещаем изменять размер */
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: var(--basic-input-gradient);
+    color: var(--my-color);
+}
+
+input {
+    width: 90%; /* Ширина поля в процентах */
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: var(--basic-input-gradient);
+    color: var(--my-color);
+}
+.add-new-todo-button {
+    width: 90%;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.let-is {
+    color: var(--myTomato);
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.btn-group {
+    width: 90%;
+    border-radius: 10px;
+}
